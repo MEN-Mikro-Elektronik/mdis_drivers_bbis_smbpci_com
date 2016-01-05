@@ -181,7 +181,7 @@
 /*-----------------------------------------+
 |  Native SMB Controller (OnChip)          |
 +-----------------------------------------*/
-#elif defined( _SMB_NATIVE )
+#elif defined( _SMBPCI_NAT )
 #   define VAR_NAME					SMB_NATIVE		/**< hw-name and func-prefix	*/
 #	define VAR_NAME_STR				"SMB_NATIVE"	/**< hw-name and func-prefix	*/
 #endif
