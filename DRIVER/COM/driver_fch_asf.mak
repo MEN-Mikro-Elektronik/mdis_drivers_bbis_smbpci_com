@@ -42,7 +42,7 @@ MAK_INCL=$(MEN_MOD_DIR)/variant.h	\
 		 $(MEN_INC_DIR)/oss.h
 
 MAK_INP1=bb_smbpci$(INP_SUFFIX)
-MAK_INP2=smb_ich$(INP_SUFFIX)
+MAK_INP2=smb_fch$(INP_SUFFIX)
 
 MAK_INP=$(MAK_INP1) $(MAK_INP2)
 
