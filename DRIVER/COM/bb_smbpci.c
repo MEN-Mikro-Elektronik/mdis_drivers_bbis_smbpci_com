@@ -169,14 +169,14 @@ static char* Ident( void );
 static int32 Cleanup(BBIS_HANDLE *brdH, int32 retCode);
 
 /* SMB ctrl at PCIbus */
-#ifndef VAR_ISA
-	static int32 ParsePciPath( BBIS_HANDLE *h, u_int32 *pciBusNbrP );
-	static int32 PciParseDev( BBIS_HANDLE *h, u_int32 pciBusNbr,
+
+static int32 ParsePciPath( BBIS_HANDLE *h, u_int32 *pciBusNbrP );
+static int32 PciParseDev( BBIS_HANDLE *h, u_int32 pciBusNbr,
 							  u_int32 pciDevNbr, int32 *vendorIDP,
 							  int32 *deviceIDP, int32 *headTypeP, int32 *secondBusP);
-	static int32 PciCfgErr( BBIS_HANDLE *h, char *funcName, int32 error,
+static int32 PciCfgErr( BBIS_HANDLE *h, char *funcName, int32 error,
 							u_int32 pciBusNbr, u_int32 pciDevNbr, u_int32 reg );
-#endif /* SMB ctrl at PCIbus */
+
 
 static int32 CfgInfoSlot( BBIS_HANDLE *brdH, va_list argptr );
 
@@ -261,10 +261,10 @@ static int32 SMBPCI_Init(
 
 /* SMB ctrl at PCIbus */
 #ifndef VAR_ISA
-    int32			id;
-	void*			bar;
+	int32			id=0;
+	void*			bar=NULL;
 	u_int32			ctrlrBar=0, ctrlrOffset=0;
-	u_int32 		mechSlot;
+	u_int32 		mechSlot=0;
 /* SMB ctrl at ISAbus */
 #else
 	u_int32		isaAddr;			/* ISA base address */
@@ -323,6 +323,11 @@ static int32 SMBPCI_Init(
         return( Cleanup(brdH,status) );
 
     DBGWRT_1((DBH,"BB - %s_Init\n",VAR_NAME_STR));
+
+    /* satisfy compiler, use variables to remove compiler warning */
+	id=ctrlrBar;
+	ctrlrOffset=mechSlot;
+    status = ParsePciPath( bar, bar ); /* dummy call */
 
     /* scan smb keys */
 
@@ -384,12 +389,15 @@ static int32 SMBPCI_Init(
     	/* smb handle already set*/
     	brdH->alreadyInitialized = 1;
 
-    } else {
+    }
+    else
+    {
     	/* SMBPCI BBIS variant without SMB_XXX_Init */
 #ifdef _SMBPCI_NAT
 		DBGWRT_ERR((DBH, "*** %s_Init: No SMB handle from OSS!\n", VAR_NAME_STR));
 		return( Cleanup(brdH,ERR_BBIS_ILL_PARAM) );
-#else
+
+#else /* --------- main branch going till line xxx -------------- */
 
     	/* smb handle not set by bsp */
     	brdH->alreadyInitialized = 0;
@@ -402,11 +410,10 @@ static int32 SMBPCI_Init(
 			/* default pci domain is 0 */
 			brdH->domainNbr = 0;
 		}
-		
+
 /* SMB ctrl at PCIbus */
 #ifndef VAR_ISA
-	
-	    /* PCI_BUS_NUMBER - required if PCI_BUS_PATH not given  */
+		/* PCI_BUS_NUMBER - required if PCI_BUS_PATH not given  */
 	    status = DESC_GetUInt32( brdH->descH, 0, &brdH->busNbr,
 								 "PCI_BUS_NUMBER");
 
@@ -435,6 +442,7 @@ static int32 SMBPCI_Init(
 			}
 			DBGWRT_2((DBH, "\n"));
 #endif
+
 			if( (status = ParsePciPath( brdH, &brdH->busNbr )) )
 				return( Cleanup(brdH,status));
 
@@ -499,9 +507,9 @@ static int32 SMBPCI_Init(
 			/* verify vendor-id */
 			switch( id ){
 			case VAR_PCI_VEN_ID:
-#ifdef VAR_PCI_VEN_ID_2
+#  ifdef VAR_PCI_VEN_ID_2
 			case VAR_PCI_VEN_ID_2:
-#endif
+#  endif
 				DBGWRT_2(( DBH, " VAR_PCI_VEN_ID[_X]=0x%x found\n", id));
 				break;
 
@@ -615,7 +623,7 @@ static int32 SMBPCI_Init(
 
 }
 /* not AMD FCH */ 
-#else
+#else /*---------- main else branch from #ifdef in line 393 ---------- */
 
 #ifdef VAR_CTRLR_BAR
 		ctrlrBar = VAR_CTRLR_BAR;
@@ -742,7 +750,9 @@ static int32 SMBPCI_Init(
 static int32 SMBPCI_BrdInit(
     BBIS_HANDLE     *brdH )
 {
-    int32			status;
+#ifndef _SMBPCI_NAT
+    int32			status=0;
+#endif
 
 	DBGWRT_1((DBH, "BB - %s_BrdInit\n",VAR_NAME_STR));
 
@@ -1460,7 +1470,7 @@ static int32 Cleanup(
 }
 
 /* SMB ctrl at PCIbus */
-#ifndef VAR_ISA
+
 /****************************** ParsePciPath ********************************/
 /** Parses the specified PCI_BUS_PATH to find out PCI Bus Number
  *
@@ -1476,6 +1486,11 @@ static int32 ParsePciPath( BBIS_HANDLE *brdH, u_int32 *pciBusNbrP ) 	/* nodoc */
 	int32 pciBusNbr=0, pciDevNbr;
 	int32 error;
 	int32 vendorID, deviceID, headerType, secondBus;
+
+	/* defend against call with invalid pointers */
+	if ((brdH == NULL) || (pciBusNbrP == NULL)) {
+		return ERR_BBIS_ILL_PARAM;
+	}
 
 	/* parse whole pci path until our device is reached */
 	for(i=0; i<brdH->pciPathLen; i++){
@@ -1659,7 +1674,6 @@ static int32 PciCfgErr(
 				pciDevFunc, reg ));
 	return error;
 }
-#endif /* SMB ctrl at PCIbus */
 
 /****************************** CfgInfoSlot ********************************/
 /** Fulfils the BB_CfgInfo(BBIS_CFGINFO_SLOT) request
