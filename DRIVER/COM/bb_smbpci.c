@@ -1588,7 +1588,7 @@ static int32 PciParseDev(
 
 	if (pciDevNbr > 0x1f)
 	{
-		// seperate the function number from the device number
+		/* seperate the function number from the device number */
 		pciDevFunc = pciDevNbr >> 5;
 		pciMainDevNbr = (pciDevNbr & 0x0000001f);
 	}
@@ -1663,8 +1663,8 @@ static int32 PciCfgErr(
 
 	if (pciDevNbr > 0x1f)
 	{
-		// device number contains function in upper 3 bit
-		pciDevFunc = pciDevNbr >> 5;  // devNbr e.g. 0b 0101 1110
+		/* device number contains function in upper 3 bit */
+		pciDevFunc = pciDevNbr >> 5;  /* devNbr e.g. 0b 0101 1110 */
 		pciMainDevNbr = pciDevNbr & 0x0000001f;
 	}
 
