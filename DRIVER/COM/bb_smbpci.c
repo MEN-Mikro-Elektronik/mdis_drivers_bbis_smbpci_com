@@ -183,7 +183,6 @@ static char* Ident( void );
 static int32 Cleanup(BBIS_HANDLE *brdH, int32 retCode);
 
 /* SMB ctrl at PCIbus */
-
 static int32 ParsePciPath( BBIS_HANDLE *h, u_int32 *pciBusNbrP );
 static int32 PciParseDev( BBIS_HANDLE *h, u_int32 pciBusNbr,
 							  u_int32 pciDevNbr, int32 *vendorIDP,
@@ -324,8 +323,8 @@ static int32 SMBPCI_Init(
     /* get DEBUG_LEVEL_DESC - optional*/
     status = DESC_GetUInt32(brdH->descH, OSS_DBG_DEFAULT, &value,
 				"DEBUG_LEVEL_DESC");
-    if ( status && (status!=ERR_DESC_KEY_NOTFOUND) )
-        return( Cleanup(brdH,status) );
+	if ( status && (status!=ERR_DESC_KEY_NOTFOUND) )
+		return( Cleanup(brdH,status) );
 
 	/* set debug level for DESC module */
 	DESC_DbgLevelSet(brdH->descH, value);
@@ -369,14 +368,14 @@ static int32 SMBPCI_Init(
     /* get SMB_ALERT_POLL_FREQ - optional */
     status = DESC_GetUInt32( brdH->descH, 0, &brdH->alertPollFreq,
                 "SMB_ALERT_POLL_FREQ");
-    if ( status && (status!=ERR_DESC_KEY_NOTFOUND) )
-        return( Cleanup(brdH,status) );
+	if ( status && (status!=ERR_DESC_KEY_NOTFOUND) )
+		return( Cleanup(brdH,status) );
 
     /* get SMB_BUSY_WAIT - optional */
     status = DESC_GetUInt32( brdH->descH, 100, &brdH->busyWait,
                 "SMB_BUSY_WAIT");
-    if ( status && (status!=ERR_DESC_KEY_NOTFOUND) )
-        return( Cleanup(brdH,status) );
+	if ( status && (status!=ERR_DESC_KEY_NOTFOUND) )
+		return( Cleanup(brdH,status) );
 
 	/* check if any device specified */
 	if( devCount == 0 ){
@@ -428,7 +427,7 @@ static int32 SMBPCI_Init(
 /* SMB ctrl at PCIbus */
 #ifndef VAR_ISA
 		/* PCI_BUS_NUMBER - required if PCI_BUS_PATH not given  */
-	    status = DESC_GetUInt32( brdH->descH, 0, &brdH->busNbr,
+		status = DESC_GetUInt32( brdH->descH, 0, &brdH->busNbr,
 								 "PCI_BUS_NUMBER");
 
 		if( status == ERR_DESC_KEY_NOTFOUND ){
@@ -471,15 +470,15 @@ static int32 SMBPCI_Init(
 			}
 		}
 
-	    /* PCI_DEVICE_NUMBER - required if no PCI BUS SLOT given */
-	    status = DESC_GetUInt32( brdH->descH, 0xffff, &brdH->pciDevNbr, "PCI_DEVICE_NUMBER");
-	    if( status && (status!=ERR_DESC_KEY_NOTFOUND) )
-	        return( Cleanup(brdH,status) );
+		/* PCI_DEVICE_NUMBER - required if no PCI BUS SLOT given */
+		status = DESC_GetUInt32( brdH->descH, 0xffff, &brdH->pciDevNbr, "PCI_DEVICE_NUMBER");
+		if( status && (status!=ERR_DESC_KEY_NOTFOUND) )
+			return( Cleanup(brdH,status) );
 
 		if(status==ERR_DESC_KEY_NOTFOUND){
 
 			/* PCI_BUS_SLOT - required if PCI_DEVICE_NUMBER not given */
-	    	status = DESC_GetUInt32( brdH->descH, 0, &mechSlot, "PCI_BUS_SLOT");
+			status = DESC_GetUInt32( brdH->descH, 0, &mechSlot, "PCI_BUS_SLOT");
 
 			if( status==ERR_DESC_KEY_NOTFOUND ){
 				DBGWRT_ERR((DBH, "*** BB - %s_Init: Found neither Desc Key "
@@ -487,7 +486,7 @@ static int32 SMBPCI_Init(
 			}
 
 			if( status )
-	        	return( Cleanup(brdH,status) );
+				return( Cleanup(brdH,status) );
 
 		    /* convert PCI slot into PCI device id */
 	    	if( (status = OSS_PciSlotToPciDevice( osH,
@@ -499,13 +498,13 @@ static int32 SMBPCI_Init(
 	    /* get PCI_FUNCTION_NUMBER - optional */
 	    status = DESC_GetUInt32( brdH->descH, 0, &brdH->pciFuncNbr,
 	                "PCI_FUNCTION_NUMBER");
-	    if ( status && (status!=ERR_DESC_KEY_NOTFOUND) )
-	        return( Cleanup(brdH,status) );
+		if ( status && (status!=ERR_DESC_KEY_NOTFOUND) )
+			return( Cleanup(brdH,status) );
 
-	    /* ID_CHECK */
-	    status = DESC_GetUInt32( brdH->descH, 1, &brdH->idCheck, "ID_CHECK");
-	    if( status && (status!=ERR_DESC_KEY_NOTFOUND) )
-	        return( Cleanup(brdH,status) );
+		/* ID_CHECK */
+		status = DESC_GetUInt32( brdH->descH, 1, &brdH->idCheck, "ID_CHECK");
+		if( status && (status!=ERR_DESC_KEY_NOTFOUND) )
+			return( Cleanup(brdH,status) );
 
 
 		if( brdH->idCheck ){
@@ -588,7 +587,7 @@ static int32 SMBPCI_Init(
 		status = OSS_MapPhysToVirtAddr( osH,
 						(void*)((INT32_OR_64)VAR_PMIO_IDXDATA), VAR_PMIO_SIZE,
 						ADDRSPACE, BUSTYPE,
-						brdH->busNbr, &ma );
+						brdH->busNbr, (void**)&ma );
 			if( status )
 				return( Cleanup(brdH,status) );
 
@@ -600,7 +599,7 @@ static int32 SMBPCI_Init(
 		}
 
 		/* unmap index and data register */
-		OSS_UnMapVirtAddr( osH, &ma, VAR_PMIO_SIZE, ADDRSPACE );
+		OSS_UnMapVirtAddr( osH, (void**)&ma, VAR_PMIO_SIZE, ADDRSPACE );
 
 		DBGWRT_2(( DBH, " d32=0x%x\n", d32));
 
@@ -741,8 +740,8 @@ static int32 SMBPCI_Init(
 
 	/* exit descH */
     status = DESC_Exit( &brdH->descH );
-    if (status)
-        return( Cleanup(brdH,status) );
+	if (status)
+		return( Cleanup(brdH,status) );
 
   	*brdHdlP = brdH;
 
@@ -988,9 +987,9 @@ static int32 SMBPCI_BrdInfo(
 		 * build hw name (e.g. SMB controller)
 		 */
 		from = VAR_NAME_STR;
-	    while( (*brdName++ = *from++) );	/* copy string */
+		while( (*brdName++ = *from++) );	/* copy string */
 		from = " controller";
-	    while( (*brdName++ = *from++) );	/* copy string */
+		while( (*brdName++ = *from++) );	/* copy string */
 
         break;
     }
@@ -1570,7 +1569,6 @@ static int32 ParsePciPath( BBIS_HANDLE *brdH, u_int32 *pciBusNbrP ) 	/* nodoc */
 
 	return ERR_SUCCESS;
 }
-
 /****************************** PciParseDev *********************************/
 /** Get parameters from specified PCI device's config space
  *
