@@ -183,13 +183,14 @@ static char* Ident( void );
 static int32 Cleanup(BBIS_HANDLE *brdH, int32 retCode);
 
 /* SMB ctrl at PCIbus */
+#ifndef VAR_ISA
 static int32 ParsePciPath( BBIS_HANDLE *h, u_int32 *pciBusNbrP );
 static int32 PciParseDev( BBIS_HANDLE *h, u_int32 pciBusNbr,
 							  u_int32 pciDevNbr, int32 *vendorIDP,
 							  int32 *deviceIDP, int32 *headTypeP, int32 *secondBusP);
 static int32 PciCfgErr( BBIS_HANDLE *h, char *funcName, int32 error,
 							u_int32 pciBusNbr, u_int32 pciDevNbr, u_int32 reg );
-
+#endif
 
 static int32 CfgInfoSlot( BBIS_HANDLE *brdH, va_list argptr );
 
@@ -338,10 +339,11 @@ static int32 SMBPCI_Init(
     DBGWRT_1((DBH,"BB - %s_Init\n",VAR_NAME_STR));
 
     /* satisfy compiler, use variables to remove compiler warning */
+#ifndef VAR_ISA
 	id=ctrlrBar;
 	ctrlrOffset=mechSlot;
     status = ParsePciPath( bar, bar ); /* dummy call */
-
+#endif
     /* scan smb keys */
 
     /* SMB_BUSNBR */
@@ -1485,6 +1487,7 @@ static int32 Cleanup(
 
 /* SMB ctrl at PCIbus */
 
+
 /****************************** ParsePciPath ********************************/
 /** Parses the specified PCI_BUS_PATH to find out PCI Bus Number
  *
@@ -1494,6 +1497,7 @@ static int32 Cleanup(
  *
  *  \return            \c 0 On success or error code
  */
+#ifndef VAR_ISA
 static int32 ParsePciPath( BBIS_HANDLE *brdH, u_int32 *pciBusNbrP ) 	/* nodoc */
 {
 	u_int32 i;
@@ -1569,6 +1573,7 @@ static int32 ParsePciPath( BBIS_HANDLE *brdH, u_int32 *pciBusNbrP ) 	/* nodoc */
 
 	return ERR_SUCCESS;
 }
+#endif
 /****************************** PciParseDev *********************************/
 /** Get parameters from specified PCI device's config space
  *
@@ -1582,6 +1587,7 @@ static int32 ParsePciPath( BBIS_HANDLE *brdH, u_int32 *pciBusNbrP ) 	/* nodoc */
  *
  *  \return            \c 0 On success or error code (only fails if config access error)
  */
+#ifndef VAR_ISA
 static int32 PciParseDev(
 	BBIS_HANDLE *brdH,
 	u_int32 pciBusNbr,
@@ -1649,7 +1655,7 @@ static int32 PciParseDev(
 
 	return ERR_SUCCESS;
 }
-
+#endif
 /****************************** PciCfgErr ***********************************/
 /** Print Debug message
  *
@@ -1662,7 +1668,7 @@ static int32 PciParseDev(
  *
  *  \return            \c 0 On success or error code
  */
-
+#ifndef VAR_ISA
 static int32 PciCfgErr(
 	BBIS_HANDLE *brdH,
 	char *funcName,
@@ -1687,7 +1693,7 @@ static int32 PciCfgErr(
 				pciDevFunc, reg ));
 	return error;
 }
-
+#endif
 /****************************** CfgInfoSlot ********************************/
 /** Fulfils the BB_CfgInfo(BBIS_CFGINFO_SLOT) request
  *
