@@ -12,21 +12,7 @@
  *
  *     \switches DBG 
  * */
- /*-------------------------------[ History ]--------------------------------
- *
- * $Log: smb_16z001.c,v $
- * Revision 1.3  2010/12/20 13:31:54  dpfeuffer
- * R: IO mapped variants for 16Z001 SMB ctrl. required
- * M: variant 16Z001_IO and ISA_16Z001_IO implemented
- *
- * Revision 1.2  2009/10/07 13:24:02  dpfeuffer
- * R:1. some SMB_DESC_MENZ001 parameters were not initialized
- * M:1.a) SMB_DESC_MENZ001 struct initialized with 0x00
- *     b) initialize busyWait with SMB_BUSY_WAIT descriptor value
- *
- * Revision 1.1  2006/08/02 12:25:05  DPfeuffer
- * Initial Revision
- *
+ /*
  *---------------------------------------------------------------------------
  * (c) Copyright by MEN Mikro Elektronik GmbH, Nuremberg, Germany
  ******************************************************************************/

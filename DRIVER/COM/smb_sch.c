@@ -12,18 +12,7 @@
  *
  *     \switches DBG 
  * */
- /*-------------------------------[ History ]--------------------------------
- *
- * $Log: smb_sch.c,v $
- * Revision 1.2  2009/10/07 13:23:57  dpfeuffer
- * R:1. busyWait of SMB_DESC_SCH struct must be initialized
- * M:1.a) SMB_DESC_SCH struct initialized with 0x00 to prevent uninitialized
- *        parameters that were added later
- *     b) initialize busyWait with SMB_BUSY_WAIT descriptor value
- *
- * Revision 1.1  2008/10/20 13:19:52  MSoehnlein
- * Initial Revision
- *
+ /*
  *---------------------------------------------------------------------------
  * (c) Copyright by MEN Mikro Elektronik GmbH, Nuremberg, Germany
  ******************************************************************************/

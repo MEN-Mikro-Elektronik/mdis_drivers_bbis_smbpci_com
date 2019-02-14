@@ -10,59 +10,7 @@
  *
  *    \switches  SMBPCI_VARIANT
  */
- /*-------------------------------[ History ]--------------------------------
- *
- * $Log: variant.h,v $
- * Revision 1.13  2012/03/23 09:12:55  dpfeuffer
- * R:1. support for G22/F22 (ICH compatible)
- *   2. support for MM2 (SCH compatible)
- * M:1. ICH part completed
- *   2. SCH part completed
- *
- * Revision 1.12  2012/01/30 15:11:33  dpfeuffer
- * R: support for FCH and FCH_ASF SMB controller
- * M: FCH and FCH_ASF specific part added
- *
- * Revision 1.11  2010/12/20 13:31:51  dpfeuffer
- * R:1. 16Z001 SMB ctrl. at ISA bus
- *   2. IO mapped variants for 16Z001 SMB ctrl. required
- * M:1. variant ISA_16Z001 implemented
- *   2. variant 16Z001_IO and ISA_16Z001_IO implemented
- *
- * Revision 1.10  2010/07/15 14:33:56  MRoth
- * R: no support for G20 and F21P
- * M: added defines VAR_PCI_DEV_ID_7 and VAR_PCI_DEV_ID_8
- *
- * Revision 1.9  2010/06/11 15:48:09  CRuff
- * R: new variant _SMB_NATIVE added
- * M: added defines for new variant _SMB_NATIVE
- *
- * Revision 1.8  2009/05/18 13:19:18  dpfeuffer
- * R: SMBPCI_16Z001(_F208) MEN PCI vendor-id (0x1A88) not supported
- * M: MEN PCI vendor-id added
- *
- * Revision 1.7  2008/10/20 13:19:53  MSoehnlein
- * Added SCH support
- *
- * Revision 1.6  2008/01/22 14:17:12  ufranke
- * fixed
- *  - now compilable for !ONE_NAMESPACE_PER_DRIVER
- *
- * Revision 1.5  2007/10/09 15:20:41  JWu
- * added support for ICH8 (F18)
- *
- * Revision 1.4  2007/04/10 13:14:23  DPfeuffer
- * 16Z001 driver variant implemented
- *
- * Revision 1.3  2006/08/02 12:25:00  DPfeuffer
- * added SMBPCI_16Z001_F208 variant
- *
- * Revision 1.2  2006/04/28 13:54:59  DPfeuffer
- * added support for ICH0, ICH2, ICH7
- *
- * Revision 1.1  2005/11/25 15:08:50  dpfeuffer
- * Initial Revision
- *
+ /*
  *---------------------------------------------------------------------------
  * (c) Copyright by MEN Mikro Elektronik GmbH, Nuremberg, Germany
  ******************************************************************************/

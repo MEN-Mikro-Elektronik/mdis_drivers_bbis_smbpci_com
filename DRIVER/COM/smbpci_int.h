@@ -10,47 +10,7 @@
  *
  *    \switches  VAR_NAME
  */
- /*-------------------------------[ History ]--------------------------------
- *
- * $Log: smbpci_int.h,v $
- * Revision 1.10  2012/01/30 15:11:31  dpfeuffer
- * R:1. support for FCH_ASF SMB controller
- * M:1.a) maccess.h added
- *     b) bbis handel extended
- *
- * Revision 1.9  2011/05/24 16:51:46  CRuff
- * R: support of pci domains
- * M: added domainNbr to BBIS_HANDLE
- *
- * Revision 1.8  2010/12/20 13:31:49  dpfeuffer
- * R: 16Z001 SMB ctrl. at ISA bus
- * M: variant ISA_16Z001 implemented
- *
- * Revision 1.7  2009/10/07 13:23:59  dpfeuffer
- * R: initialization of busyWait in SMB_DESC_XXX struct
- * M: busyWait added to BBIS_HANDLE
- *
- * Revision 1.6  2009/08/28 10:17:48  dpfeuffer
- * R: error at last check-in (maccess.h remove)
- * M: fixed: maccess.h include remove
- *
- * Revision 1.5  2009/05/18 13:19:16  dpfeuffer
- * R: no MACCESS macros used
- * M: maccess.h include removed
- *
- * Revision 1.4  2006/08/02 12:24:58  DPfeuffer
- * SMBPCI_VARIANT replaced by VAR_NAME
- *
- * Revision 1.3  2006/02/28 08:41:52  DPfeuffer
- * BBIS_HANDLE: alertPollFreq added
- *
- * Revision 1.2  2006/02/10 16:59:01  SVogel
- * added
- *  + alreadInitialized to BBIS_HANDLE
- *
- * Revision 1.1  2005/11/25 15:08:49  dpfeuffer
- * Initial Revision
- *
+ /*
  *---------------------------------------------------------------------------
  * (c) Copyright by MEN Mikro Elektronik GmbH, Nuremberg, Germany
  ******************************************************************************/
