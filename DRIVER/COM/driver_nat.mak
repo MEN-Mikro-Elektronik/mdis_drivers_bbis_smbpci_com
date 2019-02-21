@@ -6,14 +6,8 @@
 #  
 #    Description: Makefile definitions for SMB BBIS - variant NATIVE
 #                      
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: driver_nat.mak,v $
-#   Revision 1.1  2010/06/11 15:45:38  CRuff
-#   Initial Revision
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright by MEN mikro elektronik GmbH, Nuernberg, Germany 
+#   Copyright (c) 2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

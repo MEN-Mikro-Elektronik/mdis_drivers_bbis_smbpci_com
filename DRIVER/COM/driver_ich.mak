@@ -6,21 +6,8 @@
 #  
 #    Description: Makefile definitions for SMBPCI BBIS - variant ICH
 #                      
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: driver_ich.mak,v $
-#   Revision 1.3  2008/01/22 14:19:36  ufranke
-#   fixed
-#    - now compilable for !ONE_NAMESPACE_PER_DRIVER
-#
-#   Revision 1.2  2006/08/02 12:25:03  DPfeuffer
-#   SMBPCI_VARIANT replaced by SMBPCI_ICH
-#
-#   Revision 1.1  2005/11/25 15:08:51  dpfeuffer
-#   Initial Revision
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright by MEN mikro elektronik GmbH, Nuernberg, Germany 
+#   Copyright (c) 2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

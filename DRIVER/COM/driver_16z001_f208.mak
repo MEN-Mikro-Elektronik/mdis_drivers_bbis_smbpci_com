@@ -6,18 +6,8 @@
 #  
 #    Description: Makefile definitions for SMBPCI BBIS - variant 16Z001_F208
 #                      
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: driver_16z001_f208.mak,v $
-#   Revision 1.2  2008/01/22 14:18:44  ufranke
-#   fixed
-#    - now compilable for !ONE_NAMESPACE_PER_DRIVER
-#
-#   Revision 1.1  2006/08/02 12:25:06  DPfeuffer
-#   Initial Revision
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright by MEN mikro elektronik GmbH, Nuernberg, Germany 
+#   Copyright (c) 2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

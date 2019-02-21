@@ -6,14 +6,8 @@
 #  
 #    Description: Makefile definitions for SMBPCI BBIS - variant FCH_ASF
 #                      
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: driver_fch_asf.mak,v $
-#   Revision 1.1  2012/01/30 15:11:37  dpfeuffer
-#   Initial Revision
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright by MEN mikro elektronik GmbH, Nuernberg, Germany 
+#   Copyright (c) 2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

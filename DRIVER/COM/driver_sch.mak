@@ -6,15 +6,8 @@
 #  
 #    Description: Makefile definitions for SMBPCI BBIS - variant SCH
 #                      
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: driver_sch.mak,v $
-#   Revision 1.1  2008/10/20 13:19:55  MSoehnlein
-#   Initial Revision
-#
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright by MEN mikro elektronik GmbH, Nuernberg, Germany 
+#   Copyright (c) 2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

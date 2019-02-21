@@ -6,14 +6,8 @@
 #  
 #    Description: Makefile definitions for SMBPCI BBIS - variant ISA_16Z001
 #                      
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: driver_isa_16z001.mak,v $
-#   Revision 1.1  2010/12/20 13:31:58  dpfeuffer
-#   Initial Revision
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright by MEN mikro elektronik GmbH, Nuernberg, Germany 
+#   Copyright (c) 2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
