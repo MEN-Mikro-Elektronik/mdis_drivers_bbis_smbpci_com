@@ -1,8 +1,6 @@
 #***************************  M a k e f i l e  *******************************
 #  
 #         Author: matthias.soehnlein@men.de
-#          $Date: 2008/10/20 13:19:55 $
-#      $Revision: 1.1 $
 #  
 #    Description: Makefile definitions for SMBPCI BBIS - variant SCH
 #                      
@@ -24,8 +22,13 @@
 
 
 MAK_NAME=smbpci_sch
+# the next line is updated during the MDIS installation
+STAMPED_REVISION="mdis_drivers_bbis_smbpci_com_02_45-0-g88be5a0-dirty_2019-02-21"
+
+DEF_REVISION=MAK_REVISION=$(STAMPED_REVISION)
 
 MAK_SWITCH=$(SW_PREFIX)MAC_IO_MAPPED \
+		$(SW_PREFIX)$(DEF_REVISION) \
 		   $(SW_PREFIX)_SMBPCI_SCH
 
 MAK_LIBS=$(LIB_PREFIX)$(MEN_LIB_DIR)/desc$(LIB_SUFFIX)	\

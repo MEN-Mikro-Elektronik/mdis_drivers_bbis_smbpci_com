@@ -1,8 +1,6 @@
 #***************************  M a k e f i l e  *******************************
 #  
 #         Author: dieter.pfeuffer@men.de
-#          $Date: 2010/12/20 13:31:59 $
-#      $Revision: 1.1 $
 #  
 #    Description: Makefile definitions for SMBPCI BBIS - variant ISA_16Z001_IO
 #                      
@@ -24,8 +22,13 @@
 
 
 MAK_NAME=smbisa_16z001_io
+# the next line is updated during the MDIS installation
+STAMPED_REVISION="mdis_drivers_bbis_smbpci_com_02_45-0-g88be5a0-dirty_2019-02-21"
+
+DEF_REVISION=MAK_REVISION=$(STAMPED_REVISION)
 
 MAK_SWITCH=$(SW_PREFIX)MAC_IO_MAPPED \
+		$(SW_PREFIX)$(DEF_REVISION) \
 		   $(SW_PREFIX)_SMBPCI_ISA_16Z001_IO
 		    	 	 
 MAK_LIBS=$(LIB_PREFIX)$(MEN_LIB_DIR)/desc$(LIB_SUFFIX)	\

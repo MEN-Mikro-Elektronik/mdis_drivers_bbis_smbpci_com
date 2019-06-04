@@ -3,8 +3,6 @@
  *        \file  bb_smbpci.c
  *
  *      \author  dieter.pfeuffer@men.de
- *        $Date: 2012/03/23 09:12:52 $
- *    $Revision: 1.23 $
  *
  *      \brief   SMBPCI BBIS for SMB controllers on PCI bus
  *

@@ -1,8 +1,6 @@
 #***************************  M a k e f i l e  *******************************
 #  
 #         Author: dieter.pfeuffer@men.de
-#          $Date: 2012/01/30 15:11:37 $
-#      $Revision: 1.1 $
 #  
 #    Description: Makefile definitions for SMBPCI BBIS - variant FCH_ASF
 #                      
@@ -24,8 +22,13 @@
 
 
 MAK_NAME=smbpci_fch_asf
+# the next line is updated during the MDIS installation
+STAMPED_REVISION="mdis_drivers_bbis_smbpci_com_02_45-0-g88be5a0-dirty_2019-02-21"
+
+DEF_REVISION=MAK_REVISION=$(STAMPED_REVISION)
 
 MAK_SWITCH=$(SW_PREFIX)MAC_IO_MAPPED \
+		$(SW_PREFIX)$(DEF_REVISION) \
 		   $(SW_PREFIX)_SMBPCI_FCH_ASF
 		    	 	 
 MAK_LIBS=$(LIB_PREFIX)$(MEN_LIB_DIR)/desc$(LIB_SUFFIX)	\

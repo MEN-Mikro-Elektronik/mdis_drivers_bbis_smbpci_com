@@ -3,8 +3,6 @@
  *        \file  smb_fch.c
  *
  *      \author  dieter.pfeuffer@men.de
- *        $Date: $
- *    $Revision: $
  *
  *      \brief   SMBPCI BBIS - SMBPCI_FCH variant specific functions
  *

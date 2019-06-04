@@ -1,8 +1,6 @@
 #***************************  M a k e f i l e  *******************************
 #  
 #         Author: christine.ruff@men.de
-#          $Date: 2010/06/11 15:45:38 $
-#      $Revision: 1.1 $
 #  
 #    Description: Makefile definitions for SMB BBIS - variant NATIVE
 #                      
@@ -24,8 +22,13 @@
 
 
 MAK_NAME=smbpci_nat
+# the next line is updated during the MDIS installation
+STAMPED_REVISION="mdis_drivers_bbis_smbpci_com_02_45-0-g88be5a0-dirty_2019-02-21"
+
+DEF_REVISION=MAK_REVISION=$(STAMPED_REVISION)
 
 MAK_SWITCH=$(SW_PREFIX)MAC_MEM_MAPPED \
+		$(SW_PREFIX)$(DEF_REVISION) \
          $(SW_PREFIX)_SMBPCI_NAT
 
 MAK_LIBS=$(LIB_PREFIX)$(MEN_LIB_DIR)/desc$(LIB_SUFFIX)	\

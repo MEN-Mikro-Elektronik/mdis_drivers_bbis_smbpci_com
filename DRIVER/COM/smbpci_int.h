@@ -3,8 +3,6 @@
  *        \file  smbpci_int.h
  *
  *      \author  dieter.pfeuffer@men.de
- *        $Date: 2012/01/30 15:11:31 $
- *    $Revision: 1.10 $
  *
  *       \brief  SMBPCI BBIS internal header file
  *

@@ -3,8 +3,6 @@
  *        \file  smb_16z001.c
  *
  *      \author  dieter.pfeuffer@men.de
- *        $Date: 2010/12/20 13:31:54 $
- *    $Revision: 1.3 $
  *
  *      \brief   SMBPCI BBIS - SMBPCI_16Z001 variant specific functions
  *

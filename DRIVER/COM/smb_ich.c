@@ -3,8 +3,6 @@
  *        \file  smb_ich.c
  *
  *      \author  dieter.pfeuffer@men.de
- *        $Date: 2012/01/30 15:11:29 $
- *    $Revision: 1.5 $
  *
  *      \brief   SMBPCI BBIS - SMBPCI_ICH variant specific functions
  *

@@ -3,8 +3,6 @@
  *        \file  smb_sch.c
  *
  *      \author  matthias.soehnlein@men.de
- *        $Date: 2009/10/07 13:23:57 $
- *    $Revision: 1.2 $
  *
  *      \brief   SMBPCI BBIS - SMBPCI_SCH variant specific functions
  *

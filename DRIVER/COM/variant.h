@@ -3,8 +3,6 @@
  *        \file  variant.h
  *
  *      \author  dieter.pfeuffer@men.de
- *        $Date: 2012/03/23 09:12:55 $
- *    $Revision: 1.13 $
  *
  *       \brief  Header file for SMBPCI BBIS with variant specific stuff
  *
