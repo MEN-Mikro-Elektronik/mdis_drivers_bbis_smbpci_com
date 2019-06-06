@@ -31,10 +31,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define RCSID 	"$Id: bb_smbpci.c,v 1.23 2012/03/23 09:12:52 dpfeuffer Exp $"
 
 #include "smbpci_int.h"		/* internal header file */
 
+#ifdef VAR_NAME_STR
+    static const char IdentString[]=MENT_XSTR_SFX(MAK_REVISION,VAR_NAME_STR);
+#else
+    static const char IdentString[]=MENT_XSTR_SFX(MAK_REVISION);
+#endif 
 
 /*-----------------------------------------+
 |  PROTOTYPES                              |
@@ -1297,7 +1301,7 @@ static int32 SMBPCI_Unused( void )
  */
 static char* Ident( void )
 {
-	return( VAR_NAME_STR " Base Board Handler: " RCSID );
+	return( (char*) IdentString );
 }
 
 /****************************** Cleanup *************************************/
